@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu bản thân</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('DSCF2776.JPG');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            margin: 20px auto 0;
+            border-radius: 3px;
+            box-shadow: 0 4px 15px rgba(56, 239, 125, 0.5);
+        }
+        
+        h1 {
+            font-size: 56px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                         0 0 40px rgba(56, 239, 125, 0.3);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .intro {
+            line-height: 1.9;
+            color: white;
+            margin-bottom: 48px;
+            font-size: 18px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 24px 32px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 239, 125, 0.2);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 32px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 239, 125, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(56, 239, 125, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(56, 239, 125, 0.2);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 32px;
+            background: linear-gradient(180deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(56, 239, 125, 0.6);
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding: 14px 0 14px 32px;
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 8px;
+            color: #38ef7d;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 8px rgba(56, 239, 125, 0.8));
+        }
+        
+        ul li:hover {
+            padding-left: 38px;
+            color: #38ef7d;
+            text-shadow: 0 0 10px rgba(56, 239, 125, 0.5);
+        }
+        
+        ul li:hover::before {
+            left: 10px;
+        }
+        
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .chat-message {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .message-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+        }
+        
+        .message-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 239, 125, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .message-content:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(56, 239, 125, 0.5);
+            transform: translateX(5px);
+        }
+        
+        .message-content p {
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            line-height: 1.7;
+            font-size: 16px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
+        }
+        
+        .links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.4);
+        }
+        
+        .links a:active {
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hí bạn!👋</h1>
+        </div>
+        
+        <p class="intro">
+            Đây là trang web để hiện tại 1 số thông tin nho nhỏ về mình, bạn cứ thoải mái mà đi stalk về mình trong đây nhé.
+        </p>
+
+        <div class="section">
+            <div class="section-title">Giới thiệu sơ về bản thân</div>
+            <div class="chat-box">
+                <div class="chat-message">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">
+                        <p>Họ tên đầy đủ của mình là Phạm Hoàng Sang, sinh năm 2005 và là cung Sư tử é.</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <div class="message-avatar">🎬</div>
+                    <div class="message-content">
+                        <p>Mình khá là thích tự quay rồi edit video, bạn có thể tìm xem những video của mình trên các trang mạng xã hội á. Ngoài ra thì mình còn làm cho 1 số trang của trường, nếu bạn có hứng thú thì cứ thoải mái hú mình chia sẻ nhé.</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <div class="message-avatar">🏍️</div>
+                    <div class="message-content">
+                        <p>Ngoài edit video ra thì mình còn 1 thú vui nữa đó là đi phượt, bạn nhìn background của mình thì cũng đủ hiểu rồi he.</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <div class="message-avatar">💼</div>
+                    <div class="message-content">
+                        <p>Nếu tới đây mà vẫn còn đọc thì mình bị cảm động á, nên là nhớ gửi lời mời kết bạn rồi liên lạc với mình nhé.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Sở thích của mình nè</div>
+            <ul>
+                <li>Quay rồi Edit video</li>
+                <li>Đi phượt</li>
+                <li>Xem phim</li>
+                <li>Nghe nhạc</li>
+                <li>Chơi game</li>
+                <li>...</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Mạng xã hội mình hay xài</div>
+            <div class="links">
+                <a href="https://www.facebook.com/pham.sang.862204" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/phamsang05" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/in/phạm-hoàng-sang-undefined-19054229b" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Sakhmat" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
